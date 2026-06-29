@@ -1,0 +1,36 @@
+local S=Instance.new("ScreenGui",game.Players.LocalPlayer:WaitForChild("PlayerGui"))S.Name,S.ResetOnSpawn="NBNHUD_Mobile",false
+local M=Instance.new("Frame",S)M.Size,M.Position,M.BackgroundColor3,M.ClipsDescendants,M.Active,M.Draggable=UDim2.new(0,320,0,240),UDim2.new(0.5,-160,0.4,-120),Color3.fromRGB(15,15,15),true,true,true
+local C=Instance.new("UICorner",M)C.CornerRadius=UDim.new(0,12)
+local ST=Instance.new("UIStroke",M)ST.Thickness=3 ST.ApplyStrokeMode=Enum.ApplyStrokeMode.Border
+local G=Instance.new("UIGradient",M)G.Rotation=45
+local K=Instance.new("TextBox",M)K.Size,K.Position,K.PlaceholderText,K.Text,K.Font,K.BackgroundColor3=UDim2.new(0,280,0,50),UDim2.new(0,20,0,30),"Nhập Key...", "", Enum.Font.GothamBold,Color3.fromRGB(30,30,30)
+Instance.new("UICorner",K).CornerRadius=UDim.new(0,8)
+local B1=Instance.new("TextButton",M)B1.Size,B1.Position,B1.Text,B1.Visible,B1.TextColor3,B1.Font=UDim2.new(0,280,0,50),UDim2.new(0,20,0,90),"SCRIPT PVP",false,Color3.fromRGB(255,0,0),Enum.Font.GothamBold
+Instance.new("UICorner",B1).CornerRadius=UDim.new(0,8)
+local B2=Instance.new("TextButton",M)B2.Size,B2.Position,B2.Text,B2.Visible,B2.TextColor3,B2.Font=UDim2.new(0,280,0,50),UDim2.new(0,20,0,150),"FARM BLOX FRUITS",false,Color3.fromRGB(255,0,0),Enum.Font.GothamBold
+Instance.new("UICorner",B2).CornerRadius=UDim.new(0,8)
+local KL=Instance.new("TextButton",M)KL.Size,KL.Position,KL.Text,KL.BackgroundColor3=UDim2.new(0,280,0,40),UDim2.new(0,20,0,90),"LẤY KEY TẠI ĐÂY",Color3.fromRGB(200,150,0)
+Instance.new("UICorner",KL).CornerRadius=UDim.new(0,8)
+local HasKey=(getgenv().NBN_Verified==true)
+if HasKey then K.Visible=false KL.Visible=false B1.Visible=true B2.Visible=true end
+KL.MouseButton1Click:Connect(function() setclipboard("https://link4sub.com/MoK166GGx0") game:GetService("StarterGui"):SetCore("SendNotification",{Title="NBN HUD",Text="Đã copy link!",Duration=3}) end)
+K.FocusLost:Connect(function() if K.Text=="110606676278064" then getgenv().NBN_Verified=true K.Visible=false KL.Visible=false B1.Visible=true B2.Visible=true else K.Text="Sai Key!" task.wait(1) K.Text="" end end)
+B1.MouseButton1Click:Connect(function() loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/cc815ef92aaf3ed41a37aa4d87cd93ff.lua"))() end)
+B2.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/voaccnaykotchomk0999777-ctrl/NBN-/refs/heads/main/NBNVIPHUDTOP1.txt"))()
+    task.spawn(function()
+        while task.wait(0.1) do
+            local h=(tick()%5)/5
+            local color=Color3.fromHSV(h,1,1)
+            for _,obj in pairs(game.Players.LocalPlayer.PlayerGui:GetDescendants()) do
+                if obj:IsA("TextLabel") or obj:IsA("TextButton") or obj:IsA("TextBox") then
+                    obj.TextColor3=color
+                    obj.Font=Enum.Font.GothamBold
+                end
+                if obj:IsA("UIStroke") then
+                    obj.Color=color
+                end
+            end
+        end
+    end)
+end)
