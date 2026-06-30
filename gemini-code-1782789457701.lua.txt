@@ -1,0 +1,53 @@
+local KeyAuth = loadstring(game:HttpGet("https://raw.githubusercontent.com/KeyAuth/new-examples/main/lua/library.lua"))()
+KeyAuth.name = "NBN"
+KeyAuth.ownerid = "pIKBDKJmE3"
+KeyAuth.secret = "db7df43212bc929a9d6bbccf84f1490702b9d28de3774ee8f6815154b245f9b9"
+KeyAuth.version = "1.0"
+KeyAuth:init()
+
+local S = Instance.new("ScreenGui", game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+S.Name, S.ResetOnSpawn = "MEO_HUD", false
+
+local M = Instance.new("Frame", S)
+M.Size, M.Position, M.BackgroundColor3, M.Active, M.Draggable = UDim2.new(0, 350, 0, 250), UDim2.new(0.5, -175, 0.5, -125), Color3.fromRGB(20, 20, 20), true, true
+Instance.new("UICorner", M).CornerRadius = UDim.new(0, 15)
+Instance.new("UIStroke", M).Thickness = 2
+
+local T = Instance.new("TextLabel", M)
+T.Size, T.Position, T.Text, T.TextColor3, T.Font = UDim2.new(0, 350, 0, 40), UDim2.new(0, 0, 0, 0), "🛡️ MEO KEY SYSTEM", Color3.fromRGB(255, 255, 255), Enum.Font.GothamBold
+
+local K = Instance.new("TextBox", M)
+K.Size, K.Position, K.PlaceholderText, K.BackgroundColor3, K.TextColor3 = UDim2.new(0, 310, 0, 50), UDim2.new(0, 20, 0, 50), "Paste Key Here...", Color3.fromRGB(30, 30, 30), Color3.fromRGB(255, 255, 255)
+Instance.new("UICorner", K).CornerRadius = UDim.new(0, 10)
+
+local B1 = Instance.new("TextButton", M)
+B1.Size, B1.Position, B1.Text, B1.BackgroundColor3 = UDim2.new(0, 145, 0, 40), UDim2.new(0, 20, 0, 110), "Get Key", Color3.fromRGB(0, 150, 0)
+Instance.new("UICorner", B1).CornerRadius = UDim.new(0, 10)
+
+local B2 = Instance.new("TextButton", M)
+B2.Size, B2.Position, B2.Text, B2.BackgroundColor3 = UDim2.new(0, 155, 0, 40), UDim2.new(0, 175, 0, 110), "How to get key", Color3.fromRGB(0, 150, 0)
+Instance.new("UICorner", B2).CornerRadius = UDim.new(0, 10)
+
+local L = Instance.new("TextButton", M)
+L.Size, L.Position, L.Text, L.BackgroundColor3, L.TextColor3, L.Font = UDim2.new(0, 310, 0, 60), UDim2.new(0, 20, 0, 165), "Check Key & Load", Color3.fromRGB(20, 20, 20), Color3.fromRGB(255, 255, 255), Enum.Font.GothamBold
+Instance.new("UICorner", L).CornerRadius = UDim.new(0, 10)
+
+B1.MouseButton1Click:Connect(function() setclipboard("https://link4sub.com/DmBqfU9W8Z") end)
+
+L.MouseButton1Click:Connect(function()
+    local userKey = K.Text
+    L.Text = "Checking..."
+    local success = KeyAuth:license(userKey)
+    if success then
+        L.Text = "Success!"
+        task.wait(1)
+        M:Destroy()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/voaccnaykotchomk0999777-ctrl/NBN-/refs/heads/main/Jdjdjfjfjdjfjjdj"))()
+    else
+        K.Text = ""
+        K.PlaceholderText = "Invalid/Expired Key!"
+        L.Text = "Check Key & Load"
+        task.wait(2)
+        K.PlaceholderText = "Paste Key Here..."
+    end
+end)
